@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>超级质数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="超级质数问题 date：2021.11.26 有题如下： &#x2F;&#x2F;一个超级质数是指一个其左侧前任意连续位（包括其自身）均是质数的数。&#x2F;&#x2F; 例如，23399是一个5位超级质数，因为2、23、233、2339、23399均是质数。&#x2F;&#x2F;从标准输入读入一个正整数N(N&lt;9)，生成所有N位超级质数,并将它们写到标准输出上。 初见的代码是： 123456789101112131415161718192021">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超级质数">
+<meta property="og:url" content="http://example.com/2021/11/26/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="超级质数问题 date：2021.11.26 有题如下： &#x2F;&#x2F;一个超级质数是指一个其左侧前任意连续位（包括其自身）均是质数的数。&#x2F;&#x2F; 例如，23399是一个5位超级质数，因为2、23、233、2339、23399均是质数。&#x2F;&#x2F;从标准输入读入一个正整数N(N&lt;9)，生成所有N位超级质数,并将它们写到标准输出上。 初见的代码是： 123456789101112131415161718192021">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-26T08:36:50.751Z">
+<meta property="article:modified_time" content="2021-11-26T08:36:50.751Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,9 +73,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-超级质数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-超级质数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/11/26/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/" class="article-date">
   <time class="dt-published" datetime="2021-11-26T08:36:50.751Z" itemprop="datePublished">2021-11-26</time>
@@ -84,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/26/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/">超级质数</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      超级质数
     </h1>
   
 
@@ -117,114 +119,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-newpapername" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/11/25/newpapername/" class="article-date">
-  <time class="dt-published" datetime="2021-11-25T13:01:26.461Z" itemprop="datePublished">2021-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/25/newpapername/">Hello World！</a>
-    </h1>
+    <a href="/2021/11/25/newpapername/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World！</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="c语言中字符数组的初始化"><a href="#c语言中字符数组的初始化" class="headerlink" title="c语言中字符数组的初始化"></a>c语言中字符数组的初始化</h1><h5 id="date-2021-11-25"><a href="#date-2021-11-25" class="headerlink" title="date: 2021-11-25"></a>date: 2021-11-25</h5><hr>
-<p>定义须知:（摘自C Primer Plus）</p>
-<ul>
-<li><p>C语言没有专门用于储存字符串的变量类型，字符串都被储存在char类 型的数组中。</p>
-</li>
-<li><p>根据%s转换说 明，scanf()只会读取字符串中的一个单词，而不是一整句。它在遇到第1个空白（空格、制表符或换行符）时就不再读取输入。</p>
-</li>
-<li><p>字符串常量”x”和字符常量’x’不同：<br>区别之一在于’x’是基本类型（char），而”x”是派生类型（char数组）；<br>区别之二是”x”实际上由两个字符 组成：’x’和空字符’\0’。</p>
-</li>
-<li><p>字符数组必须以’\0’结尾，这意味着数组的容量必须至少比待存储字符串中的字符数多1。</p>
-</li>
-<li><p>streln()函数在读取字符数组时，停止于’\0’。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/25/newpapername/" data-id="ckwg4t5oc0001lcvcbzbfhh1s" data-title="Hello World！" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/11/25/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-11-25T11:51:21.456Z" itemprop="datePublished">2021-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/11/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/25/hello-world/" data-id="ckwg4t5o60000lcvc96x0e65d" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
