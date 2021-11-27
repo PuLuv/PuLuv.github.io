@@ -4,19 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>Hello World！ | Hexo</title>
+  <title>字符数组的初始化 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="c语言中字符数组的初始化date: 2021-11-25 定义须知:（摘自C Primer Plus）  C语言没有专门用于储存字符串的变量类型，字符串都被储存在char类 型的数组中。  根据%s转换说 明，scanf()只会读取字符串中的一个单词，而不是一整句。它在遇到第1个空白（空格、制表符或换行符）时就不再读取输入。  字符串常量”x”和字符常量’x’不同：区别之一在于’x’是基本类型（c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World！">
+<meta property="og:title" content="字符数组的初始化">
 <meta property="og:url" content="http://example.com/2021/11/25/newpapername/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="c语言中字符数组的初始化date: 2021-11-25 定义须知:（摘自C Primer Plus）  C语言没有专门用于储存字符串的变量类型，字符串都被储存在char类 型的数组中。  根据%s转换说 明，scanf()只会读取字符串中的一个单词，而不是一整句。它在遇到第1个空白（空格、制表符或换行符）时就不再读取输入。  字符串常量”x”和字符常量’x’不同：区别之一在于’x’是基本类型（c">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:/blog/kiki/blog配图/5.png">
+<meta property="og:image" content="d:/blog/kiki/blog配图/2.png">
 <meta property="article:published_time" content="2021-11-25T13:01:26.461Z">
-<meta property="article:modified_time" content="2021-11-26T08:15:48.535Z">
+<meta property="article:modified_time" content="2021-11-27T06:13:18.653Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/blog/kiki/blog配图/5.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -87,7 +90,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Hello World！
+      字符数组的初始化
     </h1>
   
 
@@ -107,13 +110,18 @@
 <li><p>字符数组必须以’\0’结尾，这意味着数组的容量必须至少比待存储字符串中的字符数多1。</p>
 </li>
 <li><p>streln()函数在读取字符数组时，停止于’\0’。</p>
+<p><img src="D:\blog\kiki\blog配图\5.png" alt="1.1"></p>
 </li>
 </ul>
+<hr>
+<p>1.对于某个新创建的字符数组，不经由任何初始化即输出</p>
+<p>本身%s的结果会以乱码的形式输出，其中每一个存储单元的内容以字符型输出都会表现为’？’，转化为整型输出则会报’-52’</p>
+<p><img src="D:\blog\kiki\blog配图\2.png" alt="1.2"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/25/newpapername/" data-id="ckwg7mg330000s8vc0rby853i" data-title="Hello World！" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/25/newpapername/" data-id="ckwhf469n0000xkvcgi5o758s" data-title="字符数组的初始化" class="article-share-link">Share</a>
       
       
       
@@ -177,7 +185,7 @@
           </li>
         
           <li>
-            <a href="/2021/11/25/newpapername/">Hello World！</a>
+            <a href="/2021/11/25/newpapername/">字符数组的初始化</a>
           </li>
         
           <li>
