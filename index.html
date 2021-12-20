@@ -71,6 +71,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-浮点型储存" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/12/20/%E6%B5%AE%E7%82%B9%E5%9E%8B%E5%82%A8%E5%AD%98/" class="article-date">
+  <time class="dt-published" datetime="2021-12-20T12:15:42.648Z" itemprop="datePublished">2021-12-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/12/20/%E6%B5%AE%E7%82%B9%E5%9E%8B%E5%82%A8%E5%AD%98/">浮点型储存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在阅读 《高质量C/C++编程》时，遇到如下问题</p>
+<p><strong>请写出</strong> <strong>float x</strong> <strong>与“零值”比较的</strong> <strong>if</strong> <strong>语句。</strong></p>
+<p>答案给出如下解析</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">标准答案示例：</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> EPSINON = <span class="number">0.00001</span>; </span><br><span class="line"><span class="keyword">if</span> ((x &gt;= - EPSINON) &amp;&amp; (x &lt;= EPSINON)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>不可将浮点变量用“==”或“！=”与数字比较，应该设法转化成“&gt;=”或“&lt;=”此类形式。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如下是错误的写法，不得分。</span><br><span class="line"> <span class="keyword">if</span> (x == <span class="number">0.0</span>) </span><br><span class="line"> <span class="keyword">if</span> (x != <span class="number">0.0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>本例涉及到浮点型数据储存误差的问题</p>
+<p>做出测试如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> a = <span class="number">702.1</span>;</span><br><span class="line"><span class="keyword">float</span> b = <span class="number">702.1</span>;</span><br><span class="line"><span class="keyword">if</span> (b == <span class="number">702.1</span>)</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ok1\n&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (b == a)</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ok2\n&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="number">702.1</span> == a)</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;ok3\n&quot;</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%e,%lf\n&quot;</span>, a,a);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%e,%f\n&quot;</span>, b,b);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%e,%f\n&quot;</span>, <span class="number">702.1</span>,<span class="number">702.1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出为</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ok3</span><br><span class="line"><span class="number">7.021000e+02</span>,<span class="number">702.100000</span></span><br><span class="line"><span class="number">7.021000e+02</span>,<span class="number">702.099976</span></span><br><span class="line"><span class="number">7.021000e+02</span>,<span class="number">702.100000</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>以上面的702.1为例，浮点数在内存中的储存方式为32位，1位符号位，8位指数位和23位尾数，尾数的具体数值为010111110/00011001100110</strong>（/前为整数部分，后为小数部分的截断）<strong>再转化为十进制就变成了702.0999755859375，%f输出四舍五入变为702.099976</strong></p>
+<p>对于小数0.9做出测试时</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> a = <span class="number">0.9</span>;</span><br><span class="line"><span class="keyword">float</span> b = <span class="number">0.9</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%lf\n&quot;</span>,a);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>,b);</span><br></pre></td></tr></table></figure>
+
+<p>输出为</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.900000</span></span><br><span class="line"><span class="number">0.900000</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>其原因为，该浮点数的尾数11001100110011001100110，最后转换为十进制0.89999997615814208984 再四舍五入为0.900000，虽然输出的结果无误，但实际上浮点误差的问题并未解决，只是恰巧最后结果输出正常</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/20/%E6%B5%AE%E7%82%B9%E5%9E%8B%E5%82%A8%E5%AD%98/" data-id="ckxer431e0004a0vc9epxbeqd" data-title="浮点型储存" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-字符雨" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/12/07/%E5%AD%97%E7%AC%A6%E9%9B%A8/" class="article-date">
@@ -99,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/07/%E5%AD%97%E7%AC%A6%E9%9B%A8/" data-id="ckwviuuzz0003ygvcdma183pq" data-title="字符雨" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/07/%E5%AD%97%E7%AC%A6%E9%9B%A8/" data-id="ckxer431d0002a0vcdb2hczqc" data-title="字符雨" class="article-share-link">Share</a>
       
       
       
@@ -150,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/26/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/" data-id="ckwviuuzy0002ygvc5tcxc77w" data-title="超级质数" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/26/%E8%B6%85%E7%BA%A7%E8%B4%A8%E6%95%B0/" data-id="ckxer431e0003a0vc9pm6efrw" data-title="超级质数" class="article-share-link">Share</a>
       
       
       
@@ -241,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/25/newpapername/" data-id="ckwviuuzw0001ygvc2177d006" data-title="字符数组的初始化" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/25/newpapername/" data-id="ckxer431c0001a0vc08gka6cn" data-title="字符数组的初始化" class="article-share-link">Share</a>
       
       
       
@@ -292,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/25/hello-world/" data-id="ckwviuuzs0000ygvc98d13kwc" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/25/hello-world/" data-id="ckxer43180000a0vc5neif0uu" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -333,6 +394,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/12/20/%E6%B5%AE%E7%82%B9%E5%9E%8B%E5%82%A8%E5%AD%98/">浮点型储存</a>
+          </li>
         
           <li>
             <a href="/2021/12/07/%E5%AD%97%E7%AC%A6%E9%9B%A8/">字符雨</a>
